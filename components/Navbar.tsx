@@ -11,7 +11,7 @@ export const Navbar = () => {
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-32 py-3   text-white bg-black ">
       <Link href="/">
-        <h1>Eldics Store</h1>
+        <h1 className="text-[#fce3c7]">Eldics Store</h1>
       </Link>
       <div className="flex items-center gap-6 lg:gap-8 max-md:hidden">
         <Link href="/" className="hover:text-gray-400 transition">
