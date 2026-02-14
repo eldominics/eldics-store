@@ -3,11 +3,10 @@ import HeaderSlider from "@/components/HeaderSlider";
 import HomeProducts from "@/components/HomeProduct";
 import { Navbar } from "@/components/Navbar";
 import { fetchProducts } from "@/utils/actions/product.action";
+
 import React from "react";
 const allProducts = await fetchProducts();
-
-console.log(allProducts);
-export default function page() {
+export default async function page() {
   return (
     <div>
       <Navbar />

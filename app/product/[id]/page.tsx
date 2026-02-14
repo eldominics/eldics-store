@@ -8,7 +8,6 @@ export default async function Product({
 }) {
   const { id } = await params;
   const product = await fetchProductById(id);
-  //fetch product
   return (
     <div>
       <ProductDetails product={product} />

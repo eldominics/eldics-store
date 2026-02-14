@@ -19,7 +19,7 @@ export async function fetchProductById(id: string) {
   try {
     const { data: product, error } = await supabase
       .from("products")
-      .select("*")
+      .select("*,category:categories!fk_category(name)")
       .eq("id", id)
       .single();
 
