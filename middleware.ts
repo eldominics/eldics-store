@@ -3,6 +3,7 @@ import { updateSession } from "@/utils/supabase/middleware";
 
 export async function middleware(request: NextRequest) {
   // update user's auth session
+  console.log("Middleware executed");
   return await updateSession(request);
 }
 

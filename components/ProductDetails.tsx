@@ -1,9 +1,19 @@
+"use client";
+
 import { ProductParams } from "@/shared.types";
 import { Navbar } from "./Navbar";
 import Image from "next/image";
 import { assets } from "@/public/assets/assets";
+import Link from "next/link";
+import { cartStore } from "./store/cart-store";
+import toast from "react-hot-toast";
 
 const ProductDetails = ({ product }: { product: ProductParams }) => {
+  const handleAddToCart = () => {
+    const addItem = cartStore.getState().addItem;
+    addItem(product);
+    toast.success("Check Cart");
+  };
   return (
     <>
       <Navbar />
@@ -107,12 +117,18 @@ const ProductDetails = ({ product }: { product: ProductParams }) => {
             </div>
 
             <div className="flex items-center mt-10 gap-4">
-              <button className="w-full py-3.5 border border-[#043033] text-gray-800/80 hover:bg-gray-200 transition">
+              <button
+                onClick={handleAddToCart}
+                className="w-full py-3.5 border border-[#043033] text-gray-800/80 hover:bg-gray-200 transition"
+              >
                 Add to Cart
               </button>
-              <button className="w-full py-3.5 bg-[#043033] text-white hover:bg-black transition">
+              <Link
+                href={`/buy-now/${product.id}`}
+                className="w-full py-3.5 bg-[#043033] text-white hover:bg-black transition"
+              >
                 Buy now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
