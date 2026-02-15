@@ -5,8 +5,9 @@ import { Navbar } from "@/components/Navbar";
 import { fetchProducts } from "@/utils/actions/product.action";
 
 import React from "react";
-const allProducts = await fetchProducts();
+
 export default async function page() {
+  const allProducts = await fetchProducts();
   return (
     <div>
       <Navbar />
