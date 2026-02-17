@@ -88,7 +88,7 @@ export interface Customer {
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ reference: string }> }
+  { params }: { params: Promise<{ reference: string }> },
 ) {
   const { reference } = await params;
   try {
@@ -102,18 +102,18 @@ export async function GET(
           Authorization: `Bearer sk_test_ce4e2defaa5fa831c6c6a110b3cea6b348b42ece`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     if (!response.ok) {
       console.log(
         "Failed verifying transaction from Paystack:",
-        response.statusText
+        response.statusText,
       );
       console.log("Failed response from Paystack:", response);
       return NextResponse.json(
         { error: "Failed to verify Paystack transaction" },
-        { status: response.status }
+        { status: response.status },
       );
     }
     const result: VerificationResponse = await response.json();
@@ -123,7 +123,7 @@ export async function GET(
     console.log("Payment API Error:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   } finally {
     console.log("Payment Verified");
