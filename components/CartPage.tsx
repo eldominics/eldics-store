@@ -6,7 +6,7 @@ import { AddressParams } from "@/shared.types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { cartStore } from "./store/cart-store";
+import { cartStore } from "../store/cart-store";
 import toast from "react-hot-toast";
 import { useAppContext } from "@/context/AppContext";
 
@@ -23,19 +23,19 @@ const CartPage = ({ addresses }: { addresses: AddressParams[] }) => {
     setTotalCost(
       items.reduce((total, item) => {
         return total + item.price * item.quantity;
-      }, 0)
+      }, 0),
     );
 
     setDeducedShippingFee(
       items.reduce((total, item) => {
         return total + item.product_shipping_fee * item.quantity;
-      }, 0)
+      }, 0),
     );
 
     if (addresses) {
       setUserAddresses(addresses);
       const defaultAddress = addresses.filter(
-        (eachAddresses) => eachAddresses.is_default === true
+        (eachAddresses) => eachAddresses.is_default === true,
       )[0];
       setSelectedAddress(defaultAddress);
     }
@@ -66,7 +66,7 @@ const CartPage = ({ addresses }: { addresses: AddressParams[] }) => {
             fullAddressFields: selectedAddress,
             items: items,
             amount: totalCost * 100 + deducedShippingFee * 100,
-          })
+          }),
         );
         router.push(paystackResult.data.authorization_url);
       }
