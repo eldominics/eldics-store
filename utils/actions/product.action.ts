@@ -11,6 +11,8 @@ export async function fetchProducts(): Promise<ProductParams[]> {
     return [];
   }
 
+  console.log("Fetched products:===.>>", products);
+
   return products;
 }
 

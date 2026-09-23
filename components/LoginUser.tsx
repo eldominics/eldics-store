@@ -34,7 +34,7 @@ const LoginUser = () => {
       const loginUser = await login(formData);
 
       if (loginUser?.error) {
-        toast.error("something went wrong with signing in");
+        toast.error(loginUser.error);
         return;
       }
       setTokenPart(true);
@@ -56,7 +56,7 @@ const LoginUser = () => {
       const otpVerification = await verifyToken(formData);
 
       if (otpVerification?.error) {
-        toast.error("Invalid token. Please try again.");
+        toast.error(otpVerification.error);
         return;
       }
       if (otpVerification?.session) {
